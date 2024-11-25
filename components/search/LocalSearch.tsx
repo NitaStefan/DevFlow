@@ -39,10 +39,11 @@ const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
             params: searchParams.toString(),
             keysToRemove: ["query"],
           });
+
           router.push(newUrl, { scroll: false });
         }
       }
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery, router, searchParams, route, pathname]);

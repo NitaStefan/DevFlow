@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+import HomeFilter from "@/components/filter/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
+
 const questions = [
   {
     _id: "1",
@@ -39,7 +41,10 @@ interface SearchParams {
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
-  const { query = "" } = await searchParams;
+  const { query = "", filter = "" } = await searchParams;
+
+  // TODO: Use the filter & query variables for the questions
+  console.log(filter);
 
   const filteredQuestions = questions.filter((question) =>
     question.title.toLowerCase().includes(query?.toLowerCase())
@@ -64,7 +69,7 @@ const Home = async ({ searchParams }: SearchParams) => {
           otherClasses="flex-1"
         />
       </section>
-      {/* HomeFilter */}
+      <HomeFilter />
       <div className="mt-10 flex w-full flex-col gap-6">
         {filteredQuestions.map((question) => (
           <h1 key={question._id}>{question.title}</h1>
