@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilter from "@/components/filter/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,12 @@ const questions = [
       { _id: "1", name: "React" },
       { _id: "2", name: "JavaScript" },
     ],
-    author: { _id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682310033802-4eb1ba11ab11?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGF2YXRhciUyMHByb2ZpbGUlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
     upvotes: 10,
     answers: 5,
     views: 100,
@@ -28,7 +34,12 @@ const questions = [
       { _id: "1", name: "React" },
       { _id: "2", name: "JavaScript" },
     ],
-    author: { _id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682310033802-4eb1ba11ab11?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGF2YXRhciUyMHByb2ZpbGUlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
     upvotes: 10,
     answers: 5,
     views: 100,
@@ -72,7 +83,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="mt-10 flex w-full flex-col gap-6">
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
